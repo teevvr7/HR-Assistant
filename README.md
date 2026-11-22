@@ -13,22 +13,7 @@ The system coordinates multi-step interactions through a directed graph state ma
 - **Action Agent & Tools**: Binds specialized Python functions for leave eligibility checks, accrual computations, schedule validations, and reimbursement reviews.
 - **Feedback Loop**: When an action violates operational constraints, the state machine routes the failure reason back to the retrieval module to supply context on why the request failed.
 
-```mermaid
-flowchart TD
-    Start([User Input]) --> Router[Intent Router]
-    Router -->|Informational Policy| RetrievePolicy[Policy Retrieval]
-    Router -->|Action Request| HRAgent[HR Action Agent]
-    Router -->|Out of Domain| OutOfScope[Domain Filter]
-
-    RetrievePolicy --> PolicyAnswer[Synthesize Response]
-    PolicyAnswer --> Complete([User Response])
-    OutOfScope --> Complete
-
-    HRAgent -->|Invoke Tool| Tools[Execute Tools]
-    Tools -->|Success| Complete
-    Tools -->|Constraint Violation| RejectionExplanation[Retrieve Policy Rationale]
-    RejectionExplanation --> HRAgent
-```
+![Architectural Design](architecture.jpg)
 
 ---
 
@@ -37,6 +22,7 @@ flowchart TD
 ```text
 hr_assistant/
 ├── app.py                      # Interactive terminal interface
+├── architecture.jpg            # System architecture diagram
 ├── langgraph.json              # LangGraph configuration
 ├── pyproject.toml              # Build metadata and dependencies
 ├── requirement.txt             # Pip dependency list
