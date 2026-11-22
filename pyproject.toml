@@ -1,0 +1,29 @@
+[project]
+name = "hr-assistant"
+version = "0.1.0"
+description = "HR Assistant AI agent - answer the employee query based on docs and tools"
+readme = "README.md"
+authors = [
+    { name = "teevvr7", email = "teevanraj123@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "colorama>=0.4.6",
+    "dotenv>=0.9.9",
+    "langchain>=1.5.2",
+    "langchain-community>=0.4.2",
+    "langchain-openai>=1.8.3",
+    "langchain-text-splitters>=1.1.3",
+    "langgraph>=1.2.23",
+    "langgraph-cli[inmem]>=0.4.43",
+    "langsmith>=0.15.0",
+    "pypdf>=7.1.1",
+    "python-dotenv>=1.2.4",
+]
+
+[project.scripts]
+hr-assistant = "hr_assistant:main"
+
+[build-system]
+requires = ["uv_build>=0.13.9,<0.14.0"]
+build-backend = "uv_build"

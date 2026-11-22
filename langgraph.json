@@ -1,0 +1,7 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "hr_assistant": "src.hr_assistant.graph:app"
+  },
+  "env": ".env"
+}
